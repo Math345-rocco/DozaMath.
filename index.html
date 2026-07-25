@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MathDoza | Cours de mathématiques</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg: #090916;
+      --card: #151528;
+      --text: #f7f6ff;
+      --muted: #aaa9bf;
+      --violet: #8b5cf6;
+      --cyan: #22d3ee;
+      --pink: #ec4899;
+      --line: #ffffff1c;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Outfit", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, #7c3aed33, transparent 28%),
+        radial-gradient(circle at 95% 50%, #0891b233, transparent 30%),
+        var(--bg);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      height: 75px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      background: #090916cc;
+      backdrop-filter: blur(15px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    .logo-icon {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      color: #09111e;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--cyan), #a78bfa);
+      box-shadow: 0 0 25px #22d3ee77;
+    }
+
+    nav a {
+      margin-left: 22px;
+      color: #cfcee0;
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: var(--cyan); }
+
+    .hero {
+      width: min(1160px, 90%);
+      min-height: 580px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 13px;
+      color: #c4b5fd;
+      border: 1px solid #8b5cf655;
+      border-radius: 30px;
+      background: #8b5cf61c;
+      font-size: .78rem;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      margin: 18px 0;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: .94;
+      letter-spacing: -3px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #e9d5ff, #a78bfa, #22d3ee);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 550px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      padding: 13px 19px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 750;
+      transition: .25s;
+    }
+
+    .btn:hover { transform: translateY(-4px); }
+
+    .btn-primary {
+      color: #0b1020;
+      background: linear-gradient(135deg, #c4b5fd, #67e8f9);
+      box-shadow: 0 12px 30px #8b5cf655;
+    }
+
+    .btn-outline {
+      color: white;
+      border: 1px solid var(--line);
+      background: #ffffff0c;
+    }
+
+    .math-card {
+      padding: 25px;
+      border: 1px solid #a78bfa70;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #1a1932, #10101d);
+      box-shadow: 0 30px 80px #0008;
+      transform: rotate(2deg);
+      transition: .3s;
+    }
+
+    .math-card:hover {
+      transform: rotate(0deg) translateY(-8px);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      color: #9493a8;
+      font-size: .8rem;
+    }
+
+    .dots span {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      margin-left: 5px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    .dots span:nth-child(2) { background: #fbbf24; }
+    .dots span:nth-child(3) { background: #34d399; }
+
+    .formula {
+      padding: 45px 0;
+      text-align: center;
+      color: #e9e4ff;
+      font: italic 4rem Georgia, serif;
+    }
+
+    .formula span { color: var(--cyan); }
+
+    .mini {
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #ffffff09;
+    }
+
+    .mini b { font-size: .95rem; }
+    .mini p { margin: 5px 0 0; font-size: .85rem; }
+
+    main {
+      width: min(1160px, 90%);
+      margin: auto;
+    }
+
+    section { padding: 80px 0 0; }
+
+    .section-top {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .section-name {
+      color: var(--cyan);
+      font-size: .75rem;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      margin: 8px 0 0;
+      font-size: 2.6rem;
+      letter-spacing: -1.5px;
+    }
+
+    .section-top p {
+      max-width: 400px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .semester-label {
+      margin-bottom: 16px;
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .semester-label span {
+      padding: 5px 9px;
+      margin-right: 9px;
+      color: #c4b5fd;
+      border: 1px solid #8b5cf655;
+      border-radius: 7px;
+      background: #8b5cf622;
+      font-size: .8rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+    }
+
+    .course {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(145deg, #19192d, #10101e);
+      transition: .25s;
+    }
+
+    .course:hover {
+      transform: translateY(-7px);
+      border-color: #a78bfa88;
+    }
+
+    .course-head {
+      padding: 22px;
+      background: radial-gradient(circle at 85% 0%, #8b5cf644, transparent 40%);
+    }
+
+    .symbol {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      color: white;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #ffffff0e;
+      font: italic 1.6rem Georgia, serif;
+    }
+
+    .course h3 {
+      margin: 14px 0 3px;
+      font-size: 1.35rem;
+    }
+
+    .course-head p {
+      margin: 0;
+      color: #a3a2b7;
+      font-size: .86rem;
+    }
+
+    .chapters { padding: 0 22px 14px; }
+
+    .chapter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px 0;
+      border-top: 1px solid #ffffff10;
+    }
+
+    .chapter b {
+      display: block;
+      font-size: .9rem;
+    }
+
+    .chapter small {
+      color: #9e9db1;
+      font-size: .82rem;
+    }
+
+    .open {
+      width: 33px;
+      height: 33px;
+      color: white;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #ffffff0d;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .open:hover {
+      color: #07111d;
+      background: var(--cyan);
+    }
+
+    footer {
+      margin-top: 90px;
+      padding: 35px;
+      color: #9695aa;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: #03030ddd;
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.active { display: grid; }
+
+    .modal-box {
+      width: min(510px, 100%);
+      position: relative;
+      padding: 30px;
+      border: 1px solid #a78bfa88;
+      border-radius: 19px;
+      background: #17172a;
+      box-shadow: 0 30px 100px #000;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: white;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-size: 1.7rem;
+    }
+
+    .resource {
+      display: block;
+      margin-top: 12px;
+      padding: 14px;
+      color: white;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #ffffff09;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .resource:hover {
+      border-color: var(--cyan);
+      background: #22d3ee17;
+    }
+
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 70px 0; }
+      .math-card { display: none; }
+      .section-top { display: block; }
+      nav a:not(:last-child) { display: none; }
+    }
+.profile-logo {
+  width: 90px;
+  height: 40px;
+  min-height: 88px;
+  border-radius: 90%;
+  transform: translateY(18px);
+  object-fit: cover;
+  border: 2px solid #22d3ee;
+  box-shadow: 0 0 18px #22d3ee88;
+}
+
+.contact-box {
+  margin: 75px 0 0;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  border: 1px solid #8b5cf677;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #8b5cf625, #22d3ee18);
+}
+
+.contact-box h2 {
+  margin: 8px 0;
+  font-size: 2rem;
+}
+
+.contact-box p {
+  margin: 0;
+  color: #aaa9bf;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact-links a {
+  padding: 12px 15px;
+  color: white;
+  border: 1px solid #ffffff25;
+  border-radius: 10px;
+  background: #ffffff0d;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.contact-links a:hover {
+  color: #07111d;
+  background: #22d3ee;
+}
+
+@media (max-width: 700px) {
+  .contact-box {
+    display: block;
+  }
+
+  .contact-links {
+    margin-top: 20px;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img class="profile-logo" src="photo/profile.png.png" alt="Photo du professeur">
+      MathDoza
+    </div>
+
+    <div>
+      <a href="#s1">S1</a>
+      <a href="#s3">S3</a>
+      <a href="#about">À propos</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <span class="badge">● PLATEFORME DE MATHÉMATIQUES</span>
+
+      <h1>
+        Les maths,<br />
+        <span class="gradient">bien expliquées.</span>
+      </h1>
+
+      <p>
+        Cours de mathématiques pour les étudiants de S1 et S3 :
+        vidéos organisées par chapitre et feuilles de TD en PDF.
+      </p>
+
+      <div class="buttons">
+        <a class="btn btn-primary" href="#s1">Explorer les cours →</a>
+        <a class="btn btn-outline" href="#s3">Voir S3</a>
+      </div>
+    </div>
+
+    <div class="math-card">
+      <div class="card-top">
+        <span>mathdoza / cours</span>
+        <span class="dots"><span></span><span></span><span></span></span>
+      </div>
+
+      <div class="formula">∫ f(x) dx = <span>∞</span></div>
+
+      <div class="mini">
+        <b>✦ Vidéos + TD organisés</b>
+        <p>Choisis ton chapitre et commence à réviser.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="s1">
+      <div class="section-top">
+        <div>
+          <div class="section-name">01 / PROGRAMMES</div>
+          <h2>Semestre 1</h2>
+        </div>
+        <p>Les fondamentaux d'analyse et d'algèbre pour bien commencer.</p>
+      </div>
+
+      <div class="semester-label"><span>S1</span> Modules disponibles</div>
+      <div class="grid" id="s1-courses"></div>
+    </section>
+
+    <section id="s3">
+      <div class="section-top">
+        <div>
+          <div class="section-name">02 / PROGRAMMES</div>
+          <h2>Semestre 3</h2>
+        </div>
+        <p>Analyse complexe, convolution et transformées.</p>
+      </div>
+
+      <div class="semester-label"><span>S3</span> Modules disponibles</div>
+      <div class="grid" id="s3-courses"></div>
+    </section>
+
+    <section id="about">
+      <div class="section-top">
+        <div>
+          <div class="section-name">MATHDOZA</div>
+          <h2>Réviser sans se perdre.</h2>
+        </div>
+        <p>Chaque chapitre rassemble la vidéo du cours et le TD correspondant.</p>
+      </div>
+    </section>
+  </main>
+
+<section class="contact-box">
+  <div>
+    <div class="section-name">RESTONS CONNECTÉS</div>
+    <h2>Besoin d'aide ?</h2>
+    <p>Pour les questions, les suggestions ou les nouveaux cours.</p>
+  </div>
+
+  <div class="contact-links">
+    <a href="https://wa.me/212774692412" target="_blank">WhatsApp</a>
+    <a href="https://youtube.com/@TON_COMPTE" target="_blank">YouTube</a>
+    <a href="mailto:tonemail@gmail.com">Email</a>
+  </div>
+</section>
+
+<footer>© 2026 MathDoza · Plateforme de cours de mathématiques</footer>
+  <footer>© 2026 MathDoza · Plateforme de cours de mathématiques</footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <button class="close">×</button>
+      <h3 id="modal-title"></h3>
+      <p>Ressources du chapitre :</p>
+      <div id="resources"></div>
+    </div>
+  </div>
+
+  <script>
+    
+    const modules = {
+      s1: [
+        {
+          name: "Analyse 1",
+          icon: "∫",
+          chapters: [
+            { title: "Les suites numériques", video: "", pdf: "https://drive.google.com/file/d/1HG4_j5nmCTL7soFS-dhgsnIy048K2VGp/view?usp=sharing" },
+            { title: "Les fonctions numériques", video: "", pdf: "" },
+            { title: "Développements limités", video: "", pdf: "" },
+            { title: "Courbe paramétrique", video: "https://youtu.be/-n1rSYPDdAs?si=HIVPdxA5kg1SLphR", pdf: "" }
+          ]
+        },
+        {
+          name: "Algèbre 1",
+          icon: "⊕",
+          chapters: [
+            { title: "Espace vectoriel", video: "", pdf: "" },
+            { title: "Nombre complexe", video: "", pdf: "" },
+            { title: "Polynôme", video: "", pdf: "" }
+          ]
+        }
+      ],
+
+      s3: [
+        {
+          name: "Analyse 3",
+          icon: "ƒ",
+          chapters: [
+            { title: "Analyse complexe", video: "", pdf: "" },
+            { title: "Convolution de fonctions", video: "", pdf: "" },
+            { title: "Transformée de Fourier", video: "", pdf: "" },
+            { title: "Transformée de Laplace", video: "", pdf: "" }
+          ]
+        }
+      ]
+    };
+
+    function renderCourses(targetId, items) {
+      const target = document.getElementById(targetId);
+
+      target.innerHTML = items.map(module => `
+        <article class="course">
+          <div class="course-head">
+            <div class="symbol">${module.icon}</div>
+            <h3>${module.name}</h3>
+            <p>${module.chapters.length} chapitres disponibles</p>
+          </div>
+
+          <div class="chapters">
+            ${module.chapters.map((chapter, index) => `
+              <div class="chapter">
+                <div>
+                  <b>Chapitre ${index + 1}</b>
+                  <small>${chapter.title}</small>
+                </div>
+
+                <button
+                  class="open"
+                  data-module="${module.name}"
+                  data-index="${index}"
+                  data-title="${module.name} — Chapitre ${index + 1} : ${chapter.title}">
+                  →
+                </button>
+              </div>
+            `).join("")}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    renderCourses("s1-courses", modules.s1);
+    renderCourses("s3-courses", modules.s3);
+
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const resources = document.getElementById("resources");
+
+    document.addEventListener("click", event => {
+      if (event.target.classList.contains("open")) {
+        const allModules = [...modules.s1, ...modules.s3];
+        const module = allModules.find(item => item.name === event.target.dataset.module);
+        const chapter = module.chapters[event.target.dataset.index];
+
+        modalTitle.textContent = event.target.dataset.title;
+
+        resources.innerHTML = `
+          ${chapter.video
+            ? `<a class="resource" href="${chapter.video}" target="_blank">▶ Voir la vidéo du cours</a>`
+            : `<div class="resource">▶ Vidéo bientôt disponible</div>`
+          }
+
+          ${chapter.pdf
+            ? `<a class="resource" href="${chapter.pdf}" target="_blank">📄 Télécharger le TD (PDF)</a>`
+            : `<div class="resource">📄 TD bientôt disponible</div>`
+          }
+        `;
+
+        modal.classList.add("active");
+      }
+
+      if (event.target.classList.contains("close") || event.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        modal.classList.remove("active");
+      }
+    });
+  </script>
+</body>
+</html>
+```
