@@ -32,6 +32,104 @@
         var(--bg);
     }
 
+    /* ===== ÉCRAN DE CONNEXION ===== */
+    #loginScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 10% 0%, #7c3aed33, transparent 28%),
+        radial-gradient(circle at 95% 50%, #0891b233, transparent 30%),
+        var(--bg);
+    }
+
+    .login-box {
+      width: min(400px, 100%);
+      padding: 40px 36px;
+      border: 1px solid #a78bfa70;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #1a1932, #10101d);
+      box-shadow: 0 30px 80px #0008;
+    }
+
+    .login-badge {
+      display: inline-block;
+      padding: 8px 13px;
+      color: #c4b5fd;
+      border: 1px solid #8b5cf655;
+      border-radius: 30px;
+      background: #8b5cf61c;
+      font-size: .78rem;
+      letter-spacing: 1px;
+    }
+
+    .login-box h1 {
+      margin: 18px 0 6px;
+      font-size: 1.9rem;
+      letter-spacing: -1px;
+    }
+
+    .login-box p.sub {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .login-box label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px 13px;
+      margin-bottom: 16px;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #ffffff09;
+      font-family: inherit;
+      font-size: .95rem;
+    }
+
+    .login-box input:focus {
+      outline: none;
+      border-color: var(--cyan);
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 6px;
+      color: #0b1020;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #c4b5fd, #67e8f9);
+      box-shadow: 0 12px 30px #8b5cf655;
+      font-family: inherit;
+      font-size: .95rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .login-box button:hover { transform: translateY(-3px); }
+
+    .login-error {
+      min-height: 18px;
+      margin: -6px 0 10px;
+      color: var(--pink);
+      font-size: .85rem;
+    }
+
+    #siteContent { display: none; }
+    /* ===== FIN ÉCRAN DE CONNEXION ===== */
+
     nav {
       position: sticky;
       top: 0;
@@ -395,73 +493,96 @@
       .section-top { display: block; }
       nav a:not(:last-child) { display: none; }
     }
-.profile-logo {
-  width: 90px;
-  height: 40px;
-  min-height: 88px;
-  border-radius: 90%;
-  transform: translateY(18px);
-  object-fit: cover;
-  border: 2px solid #22d3ee;
-  box-shadow: 0 0 18px #22d3ee88;
-}
+    .profile-logo {
+      width: 90px;
+      height: 40px;
+      min-height: 88px;
+      border-radius: 90%;
+      transform: translateY(18px);
+      object-fit: cover;
+      border: 2px solid #22d3ee;
+      box-shadow: 0 0 18px #22d3ee88;
+    }
 
-.contact-box {
-  margin: 75px 0 0;
-  padding: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  border: 1px solid #8b5cf677;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #8b5cf625, #22d3ee18);
-}
+    .contact-box {
+      margin: 75px 0 0;
+      padding: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      border: 1px solid #8b5cf677;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #8b5cf625, #22d3ee18);
+    }
 
-.contact-box h2 {
-  margin: 8px 0;
-  font-size: 2rem;
-}
+    .contact-box h2 {
+      margin: 8px 0;
+      font-size: 2rem;
+    }
 
-.contact-box p {
-  margin: 0;
-  color: #aaa9bf;
-}
+    .contact-box p {
+      margin: 0;
+      color: #aaa9bf;
+    }
 
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-.contact-links a {
-  padding: 12px 15px;
-  color: white;
-  border: 1px solid #ffffff25;
-  border-radius: 10px;
-  background: #ffffff0d;
-  text-decoration: none;
-  font-weight: 700;
-}
+    .contact-links a {
+      padding: 12px 15px;
+      color: white;
+      border: 1px solid #ffffff25;
+      border-radius: 10px;
+      background: #ffffff0d;
+      text-decoration: none;
+      font-weight: 700;
+    }
 
-.contact-links a:hover {
-  color: #07111d;
-  background: #22d3ee;
-}
+    .contact-links a:hover {
+      color: #07111d;
+      background: #22d3ee;
+    }
 
-@media (max-width: 700px) {
-  .contact-box {
-    display: block;
-  }
+    @media (max-width: 700px) {
+      .contact-box {
+        display: block;
+      }
 
-  .contact-links {
-    margin-top: 20px;
-  }
-}
+      .contact-links {
+        margin-top: 20px;
+      }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- ===== ÉCRAN DE CONNEXION ===== -->
+  <div id="loginScreen">
+    <div class="login-box">
+      <span class="login-badge">● ACCÈS RÉSERVÉ</span>
+      <h1>MathDoza</h1>
+      <p class="sub">Connectez-vous pour accéder aux cours.</p>
+
+      <label for="username">Nom d'utilisateur</label>
+      <input type="text" id="username" autocomplete="username">
+
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" autocomplete="current-password">
+
+      <div class="login-error" id="loginError"></div>
+
+      <button onclick="tryLogin()">Se connecter</button>
+    </div>
+  </div>
+  <!-- ===== FIN ÉCRAN DE CONNEXION ===== -->
+
+  <div id="siteContent">
+
   <nav>
     <div class="logo">
       <img class="profile-logo" src="photo/profile.png.png" alt="Photo du professeur">
@@ -548,21 +669,20 @@
     </section>
   </main>
 
-<section class="contact-box">
-  <div>
-    <div class="section-name">RESTONS CONNECTÉS</div>
-    <h2>Besoin d'aide ?</h2>
-    <p>Pour les questions, les suggestions ou les nouveaux cours.</p>
-  </div>
+  <section class="contact-box">
+    <div>
+      <div class="section-name">RESTONS CONNECTÉS</div>
+      <h2>Besoin d'aide ?</h2>
+      <p>Pour les questions, les suggestions ou les nouveaux cours.</p>
+    </div>
 
-  <div class="contact-links">
-    <a href="https://wa.me/212774692412" target="_blank">WhatsApp</a>
-    <a href="https://youtube.com/@TON_COMPTE" target="_blank">YouTube</a>
-    <a href="mailto:tonemail@gmail.com">Email</a>
-  </div>
-</section>
+    <div class="contact-links">
+      <a href="https://wa.me/212774692412" target="_blank">WhatsApp</a>
+      <a href="https://youtube.com/@TON_COMPTE" target="_blank">YouTube</a>
+      <a href="mailto:tonemail@gmail.com">Email</a>
+    </div>
+  </section>
 
-<footer>© 2026 MathDoza · Plateforme de cours de mathématiques</footer>
   <footer>© 2026 MathDoza · Plateforme de cours de mathématiques</footer>
 
   <div class="modal" id="modal">
@@ -574,8 +694,44 @@
     </div>
   </div>
 
+  </div><!-- fin #siteContent -->
+
   <script>
-    
+    // ⚠️ Identifiants stockés ici, dans le JS — n'importe qui ouvrant
+    // "Inspecter" dans le navigateur peut les lire. Ça décourage les
+    // visiteurs occasionnels, mais ce n'est pas une vraie sécurité.
+    const VALID_USERNAME = "Doza";
+    const VALID_PASSWORD = "PR2027";
+
+    function tryLogin(){
+      const u = document.getElementById('username').value.trim();
+      const p = document.getElementById('password').value;
+      const err = document.getElementById('loginError');
+
+      if(u === VALID_USERNAME && p === VALID_PASSWORD){
+        sessionStorage.setItem('mathdozaLoggedIn', 'true');
+        unlockSite();
+      } else {
+        err.textContent = "Nom d'utilisateur ou mot de passe incorrect.";
+      }
+    }
+
+    function unlockSite(){
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('siteContent').style.display = 'block';
+    }
+
+    // Permet de valider avec Entrée
+    document.addEventListener('DOMContentLoaded', function(){
+      document.getElementById('password').addEventListener('keydown', function(e){
+        if(e.key === 'Enter') tryLogin();
+      });
+
+      if(sessionStorage.getItem('mathdozaLoggedIn') === 'true'){
+        unlockSite();
+      }
+    });
+
     const modules = {
       s1: [
         {
@@ -606,7 +762,7 @@
           chapters: [
             { title: "Analyse complexe", video: "", pdf: "" },
             { title: "Convolution de fonctions", video: "", pdf: "" },
-            { title: "Transformée de Fourier", video: "", pdf: "" },
+            { title: "Transformée de Fourier", video: "", pdf: "https://drive.google.com/file/d/1GFjPU4Sn_xO49P8dUJzirX8U-Zb3uEf4/view?usp=sharing" },
             { title: "Transformée de Laplace", video: "", pdf: "" }
           ]
         }
@@ -689,4 +845,3 @@
   </script>
 </body>
 </html>
-```
